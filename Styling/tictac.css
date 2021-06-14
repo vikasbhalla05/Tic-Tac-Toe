@@ -14,3 +14,12 @@ body{
     display: flex;
     flex-direction: column;
 }
+
+.container-fluid{
+    flex: 1 0 auto;
+}
+
+.main-box ul{
+    font-size: 100%;
+}
+
