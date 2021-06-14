@@ -1,0 +1,16 @@
+html, body{
+    min-height: 100vh;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+.main-box{
+    margin-top: -5px;
+    width: 420px;
+    box-shadow: 1px 1px 20px 5px #cccccc , 1px 1px 20px 5px #cccccc;
+    display: flex;
+    flex-direction: column;
+}
