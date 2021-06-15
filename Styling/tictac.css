@@ -23,3 +23,11 @@ body{
     font-size: 100%;
 }
 
+footer{
+    margin-top: 20px;
+    flex-shrink: o;
+    padding: 20px 0px 20px 0px;
+    font-size: 1.1em;
+    color: white;
+    background-color: #2e2626dc;
+}
