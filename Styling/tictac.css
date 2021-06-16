@@ -31,3 +31,14 @@ footer{
     color: white;
     background-color: #2e2626dc;
 }
+
+.box{
+    font-family: 'Permanent Marker', cursive;
+    background-color: #ebebeb;
+    font-size: 500%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid #585858;
+}
+

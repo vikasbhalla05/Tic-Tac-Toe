@@ -43,16 +43,60 @@ function resetBoard(winner){
         winner==='X'?state.scores.player1++:state.scores.player2++
     }
     state.squares===Array.fill(null)
-    document.getElementById('player1Score').textContent(state.scores.player1)
-    document.getElementById('player2Score').textContent(state.scores.player2)
+    $('#player1Score').text(state.scores.player1)
+    $('#player2Score').text(state.scores.player2)
     renderBoard()
 }
 
 function showWinner(winner){
-    const alert_box =document.getElementById('alert-box')
+    const alert_box =$('#alert-box')
     if(winner){
         winner==='X'?winner= 'Player 1':winner= 'Player 2'
+        $('alert_box').html(`${winner} Won!`)
     }
-
-    alert_box.html(`${winner}`)
+    $('alert_box').html(`It's a Draw`)
+    $('alert_box').slideDown()
+    setTimeout(()=>$('alert_box').slideUp(),1000)
 }
+
+function renderSquare(index){
+    const val=state.squares[index] ? state.squares[index] : '&nbsp;'
+    return `<div value=${index} class='box col-lg-4 col-md-4 col-sm-4 col-xs-4' onclick='boxClick(${index})'>${val}</div>`
+
+}
+
+function renderBoard(){
+    let board_html=' '
+    for(let i=0;i<9;i++){
+        board_html+=renderSquare(i)
+    }
+    $('#board').html(board_html)
+    calculateWinner(state.squares)
+}
+
+function boxClick(index){
+    const squares=state.squares
+    if(calculateWinner(squares) || squares[index]){
+        return; 
+    }
+    squares[index]= state.xIsNext? 'X' : '0'
+    state.squares= squares
+    state.xIsNext= !state.xIsNext
+    renderBoard()
+}
+
+function resetGame(){
+    
+    state.scores.player1='0'
+    state.scores.player2='0'
+
+    resetBoard(null)
+}
+
+$(()=>{
+    renderBoard()
+    $('#alert_box').slideUp(.001)
+    $("#clear").on('click',()=>resetBoard(null))
+    $("#reset").on('click',()=>resetGame())
+})
+
