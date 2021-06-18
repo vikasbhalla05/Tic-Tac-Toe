@@ -39,13 +39,11 @@ function calculateWinner(squares){
 }
 
 function resetBoard(winner){
-    if(winner){
-        winner==='X'? state.scores.player1++ : state.scores.player2++ ;
-    }
+    
     state.squares=Array[9].fill(null);
     state.xIsNext=true;
-    $('#player1Score').text(state.scores.player1);
-    $('#player2Score').text(state.scores.player2);
+    document.getElementById('player1Score').innerHTML= state.scores.player1;
+    document.getElementById('player2Score').innerHTML= state.scores.player2;
     renderBoard();
 }
 
@@ -60,7 +58,7 @@ function showWinner(winner){
         alert_box.html(`It's a Draw`);
     }
     alert_box.slideDown();
-    setTimeout(()=>alert_box.slideUp(),1000);
+    setTimeout(()=>alert_box.slideUp(),2000);
 }
 
 function renderSquare(index){
@@ -90,17 +88,15 @@ function boxClick(index){
 }
 
 function resetGame(){
-    
+    resetBoard(null);
     state.scores.player1=0;
     state.scores.player2=0;
-
-    resetBoard(null);
 }
 
 $(()=>{
     renderBoard();
     $('#alert-box').slideUp(0.0001);
-    $("#clear").on('click',()=>resetBoard(null));
-    $("#reset").on('click',()=>resetGame()); 
+    $("#clear").addEventListener('click',()=>resetBoard(null));
+    $("#reset").addEventListener('click',()=>resetGame()); 
 })
 
