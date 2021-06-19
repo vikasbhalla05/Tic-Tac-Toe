@@ -96,7 +96,7 @@ function resetGame(){
 $(()=>{
     renderBoard();
     $('#alert-box').slideUp(0.0001);
-    $("#clear").addEventListener('click',()=>resetBoard(null));
-    $("#reset").addEventListener('click',()=>resetGame()); 
+    document.getElementById("clear").onclick= resetBoard(null);
+    document.getElementById("reset").onclick= resetGame(); 
 })
 
